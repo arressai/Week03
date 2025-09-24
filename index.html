@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1 class="scrolling-text">tech to connect us&nbsp;&nbsp;tech to connect us</h1>
+   <!-- the above abbreviation is for non-breaking space -->
+    <div class="container">
+    <div class="rounded-gradient-box-one">i live in...</div>
+    <div class="rounded-gradient-box-two">my friend, family, loved one lives in...</div>
+  </div>
+  <!-- Calendar Interface -->
+<div class="calendar-container">
+    <div class="calendar-section">
+        <div class="calendar-header">
+            <button class="nav-button" id="prevMonth">‹</button>
+            <div class="month-year" id="monthYear"></div>
+            <button class="nav-button" id="nextMonth">›</button>
+        </div>
+        
+        <div class="calendar">
+            <div class="weekdays">
+                <div class="weekday">Sun</div>
+                <div class="weekday">Mon</div>
+                <div class="weekday">Tue</div>
+                <div class="weekday">Wed</div>
+                <div class="weekday">Thu</div>
+                <div class="weekday">Fri</div>
+                <div class="weekday">Sat</div>
+            </div>
+            <div class="days" id="calendarDays"></div>
+        </div>
+    </div>
+
+    <div class="appointment-form">
+        <h2 class="form-title">Schedule Appointment</h2>
+        
+        <div class="selected-date" id="selectedDate">
+            Select a date from the calendar
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Time</label>
+            <div class="time-container">
+                <div>
+                    <label class="form-label" style="margin-bottom: 5px; font-size: 12px;">Start Time</label>
+                    <input type="time" class="form-input" id="startTime" value="10:00">
+                </div>
+                <div>
+                    <label class="form-label" style="margin-bottom: 5px; font-size: 12px;">End Time</label>
+                    <input type="time" class="form-input" id="endTime" value="11:00">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Appointment Title</label>
+            <input type="text" class="form-input" id="appointmentTitle" placeholder="Enter appointment title">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">My Email</label>
+            <input type="email" class="form-input" id="yourEmail" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Loved One's Email</label>
+            <input type="email" class="form-input" id="attendeeEmail" placeholder="Enter loved one's email">
+        </div>
+
+        <button class="create-appointment-btn" id="createAppointment" disabled>
+            Create Appointment
+        </button>
+
+        <div class="calendar-options">
+            <button class="calendar-option-btn" id="googleCalendar">Google Calendar</button>
+            <button class="calendar-option-btn" id="outlookCalendar">Outlook</button>
+            <button class="calendar-option-btn" id="downloadICS">Download .ICS</button>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,606 @@
+body {
+    background-image: url('outline-world-map.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    /* width: 100vw; */
+    margin: 0;
+    padding: 0;
+    display: flex;   
+    flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;     /* or row */   /* center items horizontally */      /* center items vertically */
+  min-height: 10vh;
+  /* flex-wrap: wrap;           /* allow items to wrap to next line */
+} 
+
+h1 {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    font-size: clamp(2em, 18vw, 8em); /* Responsive font size */
+    color: rgb(184, 253, 72);
+     -webkit-text-stroke: .02px black;      /* Crisp black outline */
+    text-shadow:
+        2px 2px 0 #000,
+       -2px 2px 0 #000,
+        2px -2px 0 #000,
+       -2px -2px 0 #000;   
+    margin-top: .1px;
+    white-space: nowrap;
+}
+
+.rounded-gradient-box-one {
+    width: 500px;
+    height: 75px;
+    background: linear-gradient(135deg, rgba(253, 243, 61, 0.7), rgba(255, 42, 134, 0.7));
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center; /*Start at left*/
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    margin-top: 5px;
+    overflow: hidden; /* Hide overflow for scrolling */
+    position: relative;
+}
+
+.rounded-gradient-box-two {
+    width: 500px;
+    height: 75px;
+    background: linear-gradient(135deg, rgba(86, 255, 56, 0.7), rgba(119, 124, 254, 0.7));
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center; /*Start at left*/
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    margin-top: 50px;
+    overflow: hidden; /* Hide overflow for scrolling */
+    position: relative;
+}
+
+.scrolling-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 12s linear infinite;
+    padding-left: 10%; /* Start off-screen */
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+ }
+
+.calendar-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.calendar-section {
+    background: linear-gradient(135deg, rgba(253, 243, 61, 0.85), rgba(255, 42, 134, 0.85));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.appointment-form {
+    background: linear-gradient(135deg, rgba(86, 255, 56, 0.85), rgba(119, 124, 254, 0.85));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    height: fit-content;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.nav-button {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.month-year {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+}
+
+.calendar {
+    width: 100%;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 14px;
+}
+
+.day.current-month {
+    color: #000;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.day.current-month:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    transform: scale(1.05);
+}
+
+.day.other-month {
+    color: #666;
+    cursor: not-allowed;
+}
+
+.day.selected {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.day.today {
+    border: 2px solid #000;
+    font-weight: 600;
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #000;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 75%;
+    padding: 10px 14px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.time-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.selected-date {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.create-appointment-btn {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+.create-appointment-btn:hover {
+    background: rgba(0, 0, 0, 0.95);
+    transform: translateY(-2px);
+}
+
+.create-appointment-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.calendar-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.calendar-option-btn {
+    padding: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.calendar-option-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px auto;
+    }
+    
+    .calendar-section, .appointment-form {
+        padding: 20px;
+    }
+
+    .month-year {
+        font-size: 20px;
+    }
+
+    .calendar-options {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .time-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+/* Calendar Interface Styles - ADD THIS TO THE BOTTOM OF YOUR style.css */
+.calendar-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.calendar-section {
+    background: linear-gradient(135deg, rgba(253, 243, 61, 0.85), rgba(255, 42, 134, 0.85));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.appointment-form {
+    background: linear-gradient(135deg, rgba(86, 255, 56, 0.85), rgba(119, 124, 254, 0.85));
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    height: fit-content;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.nav-button {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.month-year {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+}
+
+.calendar {
+    width: 100%;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 14px;
+}
+
+.day.current-month {
+    color: #000;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.day.current-month:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    transform: scale(1.05);
+}
+
+.day.other-month {
+    color: #666;
+    cursor: not-allowed;
+}
+
+.day.selected {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.day.today {
+    border: 2px solid #000;
+    font-weight: 600;
+}
+
+.form-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #000;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.time-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.selected-date {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.create-appointment-btn {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+.create-appointment-btn:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.95);
+    transform: translateY(-2px);
+}
+
+.create-appointment-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.calendar-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.calendar-option-btn {
+    padding: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.calendar-option-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .calendar-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px auto;
+    }
+    
+    .calendar-section, .appointment-form {
+        padding: 20px;
+    }
+
+    .month-year {
+        font-size: 20px;
+    }
+
+    .calendar-options {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .time-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
